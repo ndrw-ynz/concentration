@@ -1,0 +1,73 @@
+{
+    "1": {
+        "content": "medieval bear",
+        "img_name": "img1.png",
+        "transition_state": 0
+    },
+    "2": 
+    {
+        "content": "boss alvaric",
+        "img_name": "img2.png",
+        "transition_state": 0
+    },
+    "3": {
+        "content": "boss cetus",
+        "img_name": "img3.png",
+        "transition_state": 0
+    },
+    "4": {
+        "content": "boss crowlord",
+        "img_name": "img4.png",
+        "transition_state": 0
+    },
+    "5": {
+        "content": "boss malleus",
+        "img_name": "img5.png",
+        "transition_state": 0
+    },
+    "6": {
+        "content": "monstrous fish",
+        "img_name": "img6.png",
+        "transition_state": 0
+    },
+    "7": {
+        "content": "bestiary elephant",
+        "img_name": "img7.png",
+        "transition_state": 0
+    },
+    "8": {
+        "content": "demon behemot",
+        "img_name": "img8.png",
+        "transition_state": 0
+    },
+    "9": {
+        "content": "hokkusai tiger",
+        "img_name": "img9.png",
+        "transition_state": 0
+    },
+    "10": {
+        "content": "spectre gentleman",
+        "img_name": "img10.png",
+        "transition_state": 0
+    },
+    "11": {
+        "content": "chevalier",
+        "img_name": "img11.png",
+        "transition_state": 0
+    },
+    "12": {
+        "content": "magnus deimos",
+        "img_name": "img12.png",
+        "transition_state": 0
+    },
+    "13": {
+        "content": "mob spectre",
+        "img_name": "img13.png",
+        "transition_state": 0
+    },
+    "14": {
+        "content": "mob bidule",
+        "img_name": "img14.png",
+        "transition_state": 0
+    }
+}
