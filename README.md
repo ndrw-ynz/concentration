@@ -18,5 +18,7 @@ On Linux:
 ## Credits
 ### Game Assets
 Forest Background by edermunizz: https://edermunizz.itch.io/
+
 Characters by gilgaphoenixignis: https://gilgaphoenixignis.itch.io/
+
 Hearts by TEMOK: https://temok.itch.io/
