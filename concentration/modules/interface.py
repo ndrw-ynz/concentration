@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, os
 from modules import gametext
 from modules import board as b
 from modules import player as p
@@ -11,7 +11,7 @@ class Interface:
         self.screen = pygame.display.set_mode((928,793))
         pygame.display.set_caption('Concentration')
         self.clock = pygame.time.Clock()
-        # -------- Common variables and instances
+        # -------- Common variables 
         self.player = p.Player()
         self.menu_is_running = True
         self.game_is_running = False
@@ -19,7 +19,6 @@ class Interface:
         self.leaderboard_is_running = False
         self.credits_is_running = False
         self.gameover_is_running = False
-        self.level = 1 # Limit = 7
         self.transition_counter = 0 # Level and Game Over
         # -------- Fonts objects
         self.text_title_font = pygame.font.Font("assets/font/Wars of Asgard Condensed.ttf", 70)
@@ -40,6 +39,7 @@ class Interface:
         self.menu_exit_button = gametext.InteractiveText(self.text_button_font, "Exit", (464, 650))
         self.menu_text_buttons = [self.menu_start_button, self.menu_leaderboard_button, self.menu_credits_button, self.menu_exit_button]
         # --------- Game variables
+        self.level = 1 # Limit = 7
         self.game_bg_transition = pygame.image.load("assets/background/transitionbackground.png").convert_alpha()
         self.game_text_transition = gametext.Text(self.text_transition_font, f"Level {self.level}", (464, 397))
         self.game_hearts = [pygame.transform.scale(pygame.image.load(f"assets/heart/redheart_512px{i}.png").convert_alpha(), (50,50)) for i in range(1,3)]
@@ -58,8 +58,9 @@ class Interface:
         self.leaderboard_title = gametext.Text(self.text_title_font, "Leaderboard", (464, 100))
         self.leaderboard_back = gametext.InteractiveText(self.text_button_font, "Back", (464, 720))
 
-        
+
     def start_game(self) -> None:
+        """ Organizes the main control flow of the program """
         if self.menu_is_running:
             self.display_backgroundforest()
             self.display_menu()
@@ -78,8 +79,9 @@ class Interface:
         if self.credits_is_running:
             self.display_credits()
 
+
     def display_backgroundforest(self) -> None:
-        """ Displays the different layers of the forest background in different paces """
+        """ Displays the layers of the forest background at different paces """
         for bg in self.bg_forest_slow:
             self.screen.blit(bg, (self.bg_forest_anim[0], 0))
             self.screen.blit(bg, (self.bg_forest_anim[0] + 928, 0))
@@ -137,7 +139,7 @@ class Interface:
 
     
     def display_leaderboard(self) -> None:
-        """ Displays the top ten players of the game based on points from leaderboard.db"""
+        """ Displays the top ten players of the game based on points from leaderboard.db """
         self.display_backgroundforest()
         title_text = self.leaderboard_title
         back_button = self.leaderboard_back
@@ -150,6 +152,8 @@ class Interface:
         if back_button.is_activated():
             self.menu_is_running = True
             self.leaderboard_is_running = False
+        if "leaderboard.db" not in os.listdir("data"):
+                db.create_database()
         y_pos = 0
         for initials, score in db.query_database():
             player_text = gametext.Text(self.text_subtitle_font, f"{initials}\t\t{score}", (464, 230+y_pos))
@@ -158,6 +162,7 @@ class Interface:
 
 
     def display_credits(self) -> None:
+        """ Displays the credits of the game """
         self.display_backgroundforest()
         title = self.credits_title
         back_button = self.credits_back
@@ -200,6 +205,7 @@ class Interface:
 
 
     def display_gameover(self) -> None:
+        """ Displays the gameover message, and gathers input of the initials of the player """
         self.display_backgroundforest()
         self.screen.blit(self.gameover_title.surface, self.gameover_title.rect)
         self.screen.blit(self.gameover_enter.surface, self.gameover_enter.rect)
@@ -223,16 +229,19 @@ class Interface:
         else: 
             self.gameover_enter.change_color((255, 255, 255))
         if self.gameover_enter.is_activated() and len(self.player.initials) == 3:
-            # Reset condition of program
+            # Reset level
             self.level = 1
             # Return to menu
             self.menu_is_running = True
             self.gameover_is_running = False
+            if "leaderboard.db" not in os.listdir("data"):
+                db.create_database()
             # Inserts data to leaderboard.db
             db.insert_database(self.player.initials, self.player.points)
             
 
     def display_game(self) -> None:
+        """ Displays the game """
         self.display_backgroundforest()
         self.display_hearts()
         for card in self.board.cards:
@@ -301,4 +310,3 @@ class Interface:
                         self.game_transition_is_running = True
                         self.level += 1
                         return
-
