@@ -6,7 +6,7 @@ The whole game can be copied to the directory of your local machine by downloadi
 
 ```git clone https://github.com/mahkhun/concentration.git```
 
-Activate the virtual environment with the script in the Scripts directory. See https://docs.python.org/3/tutorial/venv.html for platform-specific instructions. Then, install the requirements needed using the pip tool:
+ Install the requirements needed using the pip tool:
 
 ```pip install -r requirements.txt```
 
