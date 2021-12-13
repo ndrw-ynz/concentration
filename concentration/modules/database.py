@@ -1,5 +1,4 @@
 import sqlite3, os
-print(os.listdir())
 
 def create_database() -> None:
     """ Function for creating leaderboard.db if it doesn't exist """
