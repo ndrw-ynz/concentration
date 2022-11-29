@@ -30,4 +30,4 @@ Hearts by TEMOK: https://temok.itch.io/
 
 ### Game Developer
 
-Game Developer: mahkhun
+Game Developer: ndrw-ynz (Andrew Albert A. Yanza)
