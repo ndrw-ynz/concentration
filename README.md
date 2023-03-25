@@ -4,7 +4,7 @@
 ## Installation
 The whole game can be copied to the directory of your local machine by downloading the source code or through cloning the git repository using the command on the command terminal:
 
-```git clone https://github.com/mahkhun/concentration.git```
+```git clone https://github.com/ndrw-ynz/concentration.git```
 
  Install the pygame module needed using the pip tool on the command terminal:
 
